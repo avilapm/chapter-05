@@ -1,0 +1,18 @@
+FROM node
+
+WORKDIR /usr/app
+
+ARG buildno
+RUN echo "Build number: $buildno"
+
+COPY package.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3333
+EXPOSE 7001
+
+
+CMD ["npm","run","dev"]
